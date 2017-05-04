@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/ramesaliyev/ej-react-workshop#readme",
   "scripts": {
-    "build": "webpack src/index.js dist/index.js"
+    "build": "webpack"
   },
   "dependencies": {
     "webpack": "^2.5.0"
