@@ -1,0 +1,16 @@
+{
+  "name": "ej-react-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramesaliyev/ej-react-workshop.git"
+  },
+  "author": "Rameş Aliyev <creator@ramesaliyev.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ramesaliyev/ej-react-workshop/issues"
+  },
+  "homepage": "https://github.com/ramesaliyev/ej-react-workshop#readme"
+}
