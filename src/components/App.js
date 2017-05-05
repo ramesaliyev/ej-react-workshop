@@ -1,50 +1,26 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import styles from './App.css';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList'
+import { connect } from 'react-redux';
 
-class App extends Component {
-  constructor() {
-    super();
-  }
+const App = ({ list, onButtonClick }) => (
+  <div className={styles.wrapper}>
+    <AddTodo onButtonClick={onButtonClick} />
+    <TodoList list={list} />
+  </div>
+);
 
-  componentDidMount() {
-    const { store } = this.context;
-
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate();  
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    const { store } = this.context;
-    const state = store.getState();
-
-    return (
-      <div className={styles.wrapper}>
-        <AddTodo
-          onButtonClick={value => {
-            store.dispatch({
-              type: 'ADD_TODO',
-              text: value
-            });
-          }}
-        />
-        <TodoList
-          list={state}
-        />
-      </div>
-    );
-  }
-};
-
-App.contextTypes = {
-  store: PropTypes.object
-};
-
-export default App;
+export default connect(
+  state => ({
+    list: state
+  }),
+  dispatch => ({
+    onButtonClick: (value) => {
+      dispatch({
+        type: 'ADD_TODO',
+        text: value
+      });
+    }
+  })  
+)(App);

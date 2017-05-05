@@ -4,8 +4,8 @@ import styles from './TodoList.css';
 const TodoList = ({ list }) => (
   <div className={styles.listWrapper} >
     <ul className={styles.list}>
-      {list.map(item =>
-        <li key={item}>{item}</li>
+      {list.map((item, index) =>
+        <li key={index}>{item}</li>
       )}
     </ul>    
   </div>
