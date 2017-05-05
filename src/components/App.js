@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
 import styles from './App.css';
+import AddTodo from './AddTodo';
+import TodoList from './TodoList'
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      list: [ 'kamil', 'fadime' ]
-    }
+      list: []
+    };
+
+    this.addItem = this.addItem.bind(this);
   }
 
-  render () {
+  addItem(value) {
+    this.setState({
+      list: [
+        ...this.state.list,
+        value
+      ]
+    });
+  }
+
+  render() {
     return (
       <div className={styles.wrapper}>
-        <div className={styles.addWrapper}>
-          <input className={styles.input} />
-          <button
-            className={styles.button}
-            onClick={() => this.setState({
-              list: [
-                ...this.state.list,
-                Date.now()
-              ]
-            })}
-          >Add</button>
-        </div>
-        <div className={styles.listWrapper} >
-          <ul className={styles.list}>
-            {this.state.list.map(item => 
-              <li key={item}>{item}</li>
-            )}
-          </ul>    
-        </div>
-      </div>  
+        <AddTodo
+          onButtonClick={this.addItem}
+        />
+        <TodoList
+          list={this.state.list}
+        />
+      </div>
     );
   }
-}
+};
 
 export default App;
