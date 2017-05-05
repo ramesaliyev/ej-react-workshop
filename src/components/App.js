@@ -3,12 +3,12 @@ import styles from './App.css';
 
 const App = () => (
   <div className={styles.wrapper}>
-    <div>
-      <input /> <button>Add</button>
+    <div className={styles.addWrapper}>
+      <input className={styles.input} />
+      <button className={styles.button} >Add</button>
     </div>
-    <div>
-      <h1>Todo List</h1>
-      <ul></ul>    
+    <div className={styles.listWrapper} >
+      <ul className={styles.list}></ul>    
     </div>
   </div>
 );
