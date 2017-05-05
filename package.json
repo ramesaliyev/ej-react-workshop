@@ -14,12 +14,11 @@
   },
   "homepage": "https://github.com/ramesaliyev/ej-react-workshop#readme",
   "scripts": {
-    "build": "webpack",
-    "server": "node server",
-    "start": "npm run build && npm run server"
+    "devserver": "node dev-server"
   },
   "dependencies": {
     "express": "^4.15.2",
-    "webpack": "^2.5.0"
+    "webpack": "^2.5.0",
+    "webpack-dev-middleware": "^1.10.2"
   }
 }
