@@ -33,7 +33,13 @@ module.exports = {
         include: path.resolve(__dirname, './src'),
         loaders: [
           'style-loader',
-          'css-loader'
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[path]_[name]_[local]_[hash:base64:5]'
+            }
+          }
         ]
       }
     ]
