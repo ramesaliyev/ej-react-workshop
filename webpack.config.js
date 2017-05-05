@@ -27,6 +27,14 @@ module.exports = {
             plugins: ['transform-object-rest-spread']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        include: path.resolve(__dirname, './src'),
+        loaders: [
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
   }

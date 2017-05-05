@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './App.css';
 
 const App = () => (
-  <div>
+  <div className="wrapper">
     <div>
       <input /> <button>Add</button>
     </div>
