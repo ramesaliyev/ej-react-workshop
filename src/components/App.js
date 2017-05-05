@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './App.css';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList'
@@ -6,35 +7,44 @@ import TodoList from './TodoList'
 class App extends Component {
   constructor() {
     super();
-
-    this.state = {
-      list: []
-    };
-
-    this.addItem = this.addItem.bind(this);
   }
 
-  addItem(value) {
-    this.setState({
-      list: [
-        ...this.state.list,
-        value
-      ]
+  componentDidMount() {
+    const { store } = this.context;
+
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate();  
     });
   }
 
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
+    const { store } = this.context;
+    const state = store.getState();
+
     return (
       <div className={styles.wrapper}>
         <AddTodo
-          onButtonClick={this.addItem}
+          onButtonClick={value => {
+            store.dispatch({
+              type: 'ADD_TODO',
+              text: value
+            });
+          }}
         />
         <TodoList
-          list={this.state.list}
+          list={state}
         />
       </div>
     );
   }
+};
+
+App.contextTypes = {
+  store: PropTypes.object
 };
 
 export default App;
